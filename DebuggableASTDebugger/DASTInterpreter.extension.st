@@ -1,6 +1,6 @@
-Extension { #name : #DASTInterpreter }
+Extension { #name : 'DASTInterpreter' }
 
-{ #category : #'*DebuggableASTDebugger' }
+{ #category : '*DebuggableASTDebugger' }
 DASTInterpreter >> currentContext: aDASTContext [
 	currentContext := aDASTContext
 ]

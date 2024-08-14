@@ -1,36 +1,26 @@
-Extension { #name : #DASTContext }
+Extension { #name : 'DASTContext' }
 
-{ #category : #'*DebuggableASTDebugger' }
-DASTContext >> currentNode [ 	
-	^self nodes top
-]
-
-{ #category : #'*DebuggableASTDebugger' }
-DASTContext >> messageNode [
-	^messageNode
-]
-
-{ #category : #'*DebuggableASTDebugger' }
+{ #category : '*DebuggableASTDebugger' }
 DASTContext >> method [
 	^self methodOrBlock nodeAST compiledMethod
 ]
 
-{ #category : #'*DebuggableASTDebugger' }
+{ #category : '*DebuggableASTDebugger' }
 DASTContext >> namedTempAt: index [
 	^ self variablesDict at: (tempVarsNamesIndexes keyAtValue: index)
 ]
 
-{ #category : #'*DebuggableASTDebugger' }
+{ #category : '*DebuggableASTDebugger' }
 DASTContext >> tempNamed: aTempVarName [
 	^ self variablesDict at: aTempVarName
 ]
 
-{ #category : #'*DebuggableASTDebugger' }
+{ #category : '*DebuggableASTDebugger' }
 DASTContext >> tempNames [
 	^ variablesDict keys
 ]
 
-{ #category : #'*DebuggableASTDebugger' }
+{ #category : '*DebuggableASTDebugger' }
 DASTContext >> top [
 	stack ifEmpty: [ ^ #emptyStack ].
 	^ stack top

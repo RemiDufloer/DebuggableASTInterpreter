@@ -2,16 +2,17 @@
 Test object for documentation experiments.
 "
 Class {
-	#name : #MyObject,
-	#superclass : #Object,
+	#name : 'MyObject',
+	#superclass : 'Object',
 	#instVars : [
 		'x',
 		'y'
 	],
-	#category : #DebuggableASTDebugger
+	#category : 'DebuggableASTDebugger',
+	#package : 'DebuggableASTDebugger'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 MyObject >> doStuff [
 	|var1 var2|
 	var1 := Random new next.
@@ -20,7 +21,7 @@ MyObject >> doStuff [
 	^x@y
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 MyObject >> setX: var1 y: var2 [
 	x := var1.
 	y := var2
