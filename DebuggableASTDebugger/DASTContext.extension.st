@@ -1,6 +1,11 @@
 Extension { #name : 'DASTContext' }
 
 { #category : '*DebuggableASTDebugger' }
+DASTContext >> currentNode [ 	
+	^self nodes top
+]
+
+{ #category : '*DebuggableASTDebugger' }
 DASTContext >> method [
 	^self methodOrBlock nodeAST compiledMethod
 ]

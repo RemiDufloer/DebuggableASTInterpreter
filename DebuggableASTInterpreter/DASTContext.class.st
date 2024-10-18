@@ -198,11 +198,6 @@ DASTContext >> contextTag [
 ]
 
 { #category : 'accessing' }
-DASTContext >> currentNode [
-	^ currentNode ifNil: [ currentNode := self nodes pop ]
-]
-
-{ #category : 'accessing' }
 DASTContext >> currentNode: anObject [
 	currentNode := anObject
 ]
@@ -570,8 +565,8 @@ DASTContext >> lookupSelector: aByteString startInClass: aClass [
             ifFalse: [ aClass ].
     ^( lclass lookupSelector: aByteString )
         ifNil: [  ^ 
-                        lclass >> #doesNotUnderstand: .
-                    self error: 'The class ',lclass asString,' does not understand the message: ', aByteString asString ].
+                        lclass lookupSelector: #doesNotUnderstand: .
+           ].
 ]
 
 { #category : 'accessing' }

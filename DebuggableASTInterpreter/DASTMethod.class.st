@@ -103,15 +103,6 @@ DASTMethod >> isPrimitive [
 ]
 
 { #category : 'accessing' }
-DASTMethod >> methodClass [
-
-	^ [ nodeAST methodClass ] on: Exception do: [ 
-			self isNoMethod 
-				ifTrue: [ ^ evaluator classOf: evaluator nilObject]
-				ifFalse: [ :e | e defaultAction ] ]
-]
-
-{ #category : 'accessing' }
 DASTMethod >> pragmas [
 	^nodeAST pragmas
 ]
