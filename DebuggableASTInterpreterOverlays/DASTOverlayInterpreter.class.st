@@ -3,65 +3,67 @@ Experimental.
 The DASTOverlayInterpreter uses ""overlays"" when reading and writing to object to debug a program in isolation. That version uses a local dictionary as a global object overlay.
 "
 Class {
-	#name : #DASTOverlayInterpreter,
-	#superclass : #DASTInterpreter,
+	#name : 'DASTOverlayInterpreter',
+	#superclass : 'DASTInterpreter',
 	#instVars : [
 		'objectStateOverlay',
 		'overlayCounter',
 		'overlaysForPC'
 	],
-	#category : #'DebuggableASTInterpreterOverlays-Interpreter - version'
+	#category : 'DebuggableASTInterpreterOverlays-Interpreter - version',
+	#package : 'DebuggableASTInterpreterOverlays',
+	#tag : 'Interpreter - version'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DASTOverlayInterpreter >> nextOverlayCounter [
 	overlayCounter := self overlayCounter + 1.
 	^ overlayCounter
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DASTOverlayInterpreter >> objectStateOverlay [
 	^ objectStateOverlay
 		ifNil: [ objectStateOverlay := IdentityDictionary new ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DASTOverlayInterpreter >> overlayCounter [
 	^overlayCounter ifNil:[overlayCounter := 0]
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 DASTOverlayInterpreter >> overlayFor: anObject [
 	^ self objectStateOverlay
 		at: self receiver
 		ifAbsentPut: [ ObjectOverlay on: self receiver ]
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 DASTOverlayInterpreter >> overlaysForPC [
 	^ overlaysForPC ifNil: [ overlaysForPC := Dictionary new ]
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 DASTOverlayInterpreter >> readInstanceVariableNamed: name [
 	^ (self overlayFor: self receiver)
 		readInstanceVariableNamed: name
 		ifAbsent: [ ^ super readInstanceVariableNamed: name ]
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 DASTOverlayInterpreter >> readInstanceVariableNamed: name for: object [
 	^ (self overlayFor: object)
 		readInstanceVariableNamed: name
 		ifAbsent: [ ^ super readInstanceVariableNamed: name ]
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 DASTOverlayInterpreter >> registerOverlayForCurrentPC: overlay [
 	self overlaysForPC at: self overlayCounter put: overlay
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 DASTOverlayInterpreter >> write: value toInstVarNamed: name [
 	| overlay |
 	overlay := self overlayFor: self receiver.

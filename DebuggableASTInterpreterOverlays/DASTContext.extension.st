@@ -1,6 +1,6 @@
-Extension { #name : #DASTContext }
+Extension { #name : 'DASTContext' }
 
-{ #category : #'*DebuggableASTInterpreterOverlays' }
+{ #category : '*DebuggableASTInterpreterOverlays' }
 DASTContext >> copyFrom: aDastContext [
 	variablesDict := aDastContext variablesDict copy.
 	receiver := aDastContext receiver.
@@ -13,12 +13,12 @@ DASTContext >> copyFrom: aDastContext [
 	tempVarsNamesIndexes := aDastContext tempVarNamesIndexes.
 ]
 
-{ #category : #'*DebuggableASTInterpreterOverlays' }
+{ #category : '*DebuggableASTInterpreterOverlays' }
 DASTContext >> tempVarIndex [
 	^tempVarIndex
 ]
 
-{ #category : #'*DebuggableASTInterpreterOverlays' }
+{ #category : '*DebuggableASTInterpreterOverlays' }
 DASTContext >> tempVarNamesIndexes [
 	^tempVarsNamesIndexes
 ]

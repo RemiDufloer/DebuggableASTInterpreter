@@ -1,1 +1,1 @@
-Package { #name : #DebuggableASTInterpreterOverlays }
+Package { #name : 'DebuggableASTInterpreterOverlays' }

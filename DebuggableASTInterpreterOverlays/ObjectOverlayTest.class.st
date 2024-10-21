@@ -1,22 +1,24 @@
 Class {
-	#name : #ObjectOverlayTest,
-	#superclass : #TestCase,
+	#name : 'ObjectOverlayTest',
+	#superclass : 'TestCase',
 	#instVars : [
 		'point',
 		'pointOverlay',
 		'interpreter'
 	],
-	#category : #'DebuggableASTInterpreterOverlays-Tests'
+	#category : 'DebuggableASTInterpreterOverlays-Tests',
+	#package : 'DebuggableASTInterpreterOverlays',
+	#tag : 'Tests'
 }
 
-{ #category : #running }
+{ #category : 'running' }
 ObjectOverlayTest >> setUp [
 	super setUp.
 	point := 4 @ 2.
 	pointOverlay := ObjectOverlay on: point
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ObjectOverlayTest >> testReadInstanceVariableFetchesLastOverlayValue [
 	pointOverlay
 		write: 1
@@ -35,7 +37,7 @@ ObjectOverlayTest >> testReadInstanceVariableFetchesLastOverlayValue [
 		equals: 5
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ObjectOverlayTest >> testReadInstanceVariableFetchesOriginalValueIfNotOverlayed [
 	pointOverlay
 		write: 1
@@ -48,7 +50,7 @@ ObjectOverlayTest >> testReadInstanceVariableFetchesOriginalValueIfNotOverlayed 
 		equals: 2
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ObjectOverlayTest >> testWrittenInstanceVariableDoesNotTouchOverlayedObject [
 	pointOverlay
 		write: 1
@@ -59,7 +61,7 @@ ObjectOverlayTest >> testWrittenInstanceVariableDoesNotTouchOverlayedObject [
 	self assert: point x equals: 4
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ObjectOverlayTest >> testWrittenInstanceVariableIsOverlayed [
 	pointOverlay
 		write: 1

@@ -1,16 +1,18 @@
 Class {
-	#name : #ObjectOverlay,
-	#superclass : #Object,
+	#name : 'ObjectOverlay',
+	#superclass : 'Object',
 	#instVars : [
 		'overlayedObject',
 		'overlayHistory',
 		'overlayState',
 		'overlayProgramCounter'
 	],
-	#category : #'DebuggableASTInterpreterOverlays-Interpreter - version'
+	#category : 'DebuggableASTInterpreterOverlays-Interpreter - version',
+	#package : 'DebuggableASTInterpreterOverlays',
+	#tag : 'Interpreter - version'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 ObjectOverlay class >> on: anObject [ 
 	|overlay|
 	overlay := self new.
@@ -18,48 +20,48 @@ ObjectOverlay class >> on: anObject [
 	^overlay
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 ObjectOverlay >> initialize [
 	overlayHistory := OrderedCollection new.
 	overlayState := Dictionary new
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ObjectOverlay >> overlayHistory [
 	^ overlayHistory
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ObjectOverlay >> overlayProgramCounter [
 	^ overlayProgramCounter
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ObjectOverlay >> overlayProgramCounter: anObject [
 	overlayProgramCounter := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ObjectOverlay >> overlayedObject [
 	^ overlayedObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ObjectOverlay >> overlayedObject: anObject [
 	overlayedObject := anObject
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 ObjectOverlay >> overlays: anInstVarName [
 	^overlayState includesKey: anInstVarName
 ]
 
-{ #category : #writing }
+{ #category : 'writing' }
 ObjectOverlay >> readInstanceVariableNamed: name ifAbsent: aBlock [
 	^ overlayState at: name ifAbsent: aBlock
 ]
 
-{ #category : #writing }
+{ #category : 'writing' }
 ObjectOverlay >> write: value toInstVarNamed: name fromNode: aNode inContext: aDastContext [
 	|instVarOverlay|
 	instVarOverlay := InstanceVariableOverlay new.
@@ -72,7 +74,7 @@ ObjectOverlay >> write: value toInstVarNamed: name fromNode: aNode inContext: aD
 	
 ]
 
-{ #category : #writing }
+{ #category : 'writing' }
 ObjectOverlay >> write: value toInstVarNamed: name fromNode: aNode inContext: aDastContext overlayIndex: anObject [
 	|instVarOverlay|
 	instVarOverlay := InstanceVariableOverlay new.

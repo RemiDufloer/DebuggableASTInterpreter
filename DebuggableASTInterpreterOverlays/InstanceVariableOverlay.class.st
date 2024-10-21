@@ -1,51 +1,53 @@
 Class {
-	#name : #InstanceVariableOverlay,
-	#superclass : #Object,
+	#name : 'InstanceVariableOverlay',
+	#superclass : 'Object',
 	#instVars : [
 		'varName',
 		'overlayValue',
 		'node',
 		'dastContext'
 	],
-	#category : #'DebuggableASTInterpreterOverlays-Interpreter - version'
+	#category : 'DebuggableASTInterpreterOverlays-Interpreter - version',
+	#package : 'DebuggableASTInterpreterOverlays',
+	#tag : 'Interpreter - version'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 InstanceVariableOverlay >> dastContext [
 	^ dastContext
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 InstanceVariableOverlay >> dastContext: anObject [
 	dastContext := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 InstanceVariableOverlay >> node [
 	^ node
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 InstanceVariableOverlay >> node: anObject [
 	node := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 InstanceVariableOverlay >> overlayValue [
 	^ overlayValue
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 InstanceVariableOverlay >> overlayValue: anObject [
 	overlayValue := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 InstanceVariableOverlay >> varName [
 	^ varName
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 InstanceVariableOverlay >> varName: anObject [
 	varName := anObject
 ]
