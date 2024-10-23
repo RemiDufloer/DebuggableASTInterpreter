@@ -12,3 +12,15 @@ DASTNilNode >> doesNotUnderstand: aMessage [
 	1 haltOnce.
 	^ false
 ]
+
+{ #category : 'accessing' }
+DASTNilNode >> methodNode [
+
+	^ self
+]
+
+{ #category : 'accessing' }
+DASTNilNode >> selector [
+
+	^ self
+]

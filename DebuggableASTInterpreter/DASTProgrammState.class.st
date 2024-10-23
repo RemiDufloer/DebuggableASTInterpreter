@@ -29,6 +29,18 @@ DASTProgrammState >> isAssignment [
 ]
 
 { #category : 'testing' }
+DASTProgrammState >> isInstantiationMessage [
+
+	^ node isInstantiationMessage
+]
+
+{ #category : 'testing' }
+DASTProgrammState >> isMessage [
+
+	^ self node isMessage 
+]
+
+{ #category : 'testing' }
 DASTProgrammState >> isMessageSend [ 
 
 	^ self node isMessageSend 
