@@ -67,3 +67,9 @@ DASTBadMissing >> programCounter: anObject [
 
 	programCounter := anObject
 ]
+
+{ #category : 'accessing - structure variables' }
+DASTBadMissing >> state [
+
+	^ nil
+]

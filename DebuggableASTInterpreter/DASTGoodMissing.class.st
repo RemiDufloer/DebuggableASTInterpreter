@@ -67,3 +67,9 @@ DASTGoodMissing >> programCounter: anObject [
 
 	programCounter := anObject
 ]
+
+{ #category : 'accessing - structure variables' }
+DASTGoodMissing >> state [
+
+	^ nil
+]

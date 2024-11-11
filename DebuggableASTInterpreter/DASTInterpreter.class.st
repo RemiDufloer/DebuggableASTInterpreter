@@ -274,7 +274,6 @@ DASTInterpreter >> stackTop [
 DASTInterpreter >> stepInto [
 
 	| node initialContext |
-	self haltIf: [ self programCounter = 80].
 	initialContext := currentContext.
 	currentContext canExecute ifFalse: [ DASTEvaluationTerminated signal ].
 	node := currentContext nodes pop.
@@ -451,7 +450,7 @@ DASTInterpreter >> visitMessageNode: aRBMessageNode [
             ]
         ].
     "check if is DNU"
-    method selector = #doesNotUnderstand: ifTrue: [ 1 haltOnce. arguments := OrderedCollection new add: aRBMessageNode; yourself ].
+    method selector = #doesNotUnderstand: ifTrue: [ arguments := OrderedCollection new add: aRBMessageNode; yourself ].
     " Set new context "
     currentContext := newContext.
     currentContext setTemporalVariablesNamed: method argumentNames values: arguments.
