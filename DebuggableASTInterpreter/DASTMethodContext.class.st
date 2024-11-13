@@ -56,7 +56,6 @@ DASTMethodContext >> initializeContext [
 
 	| theMethod theClassMethodDic aClass aSelector result 
 	  compiledMethod ast visitor flatNodes | 
-	
 	self	parent: sender.
 	aSelector := messageNode selector.
 	

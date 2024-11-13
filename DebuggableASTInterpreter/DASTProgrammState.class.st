@@ -4,7 +4,8 @@ Class {
 	#instVars : [
 		'currentContext',
 		'programCounter',
-		'node'
+		'node',
+		'dnu'
 	],
 	#category : 'DebuggableASTInterpreter',
 	#package : 'DebuggableASTInterpreter'
@@ -20,6 +21,18 @@ DASTProgrammState >> currentContext [
 DASTProgrammState >> currentContext: anObject [
 
 	currentContext := anObject
+]
+
+{ #category : 'accessing' }
+DASTProgrammState >> dnu [
+
+	^ dnu
+]
+
+{ #category : 'accessing' }
+DASTProgrammState >> dnu: anObject [
+
+	dnu := anObject
 ]
 
 { #category : 'testing' }
@@ -44,6 +57,12 @@ DASTProgrammState >> isMessage [
 DASTProgrammState >> isMessageSend [ 
 
 	^ self node isMessageSend 
+]
+
+{ #category : 'testing' }
+DASTProgrammState >> isReturn [ 
+
+	^ self node isReturn  
 ]
 
 { #category : 'testing' }
@@ -76,5 +95,6 @@ DASTProgrammState >> state: aDastInterpreter [
 	self programCounter: aDastInterpreter programCounter .
 	self currentContext: (aDastInterpreter currentContext copy) .
 	self node: ([aDastInterpreter currentContext currentNode copy] onErrorDo: [ DASTNilNode new ]).
+	self dnu: aDastInterpreter isDNU .
 	^ self
 ]

@@ -20,7 +20,8 @@ Class {
 		'tempVarsNamesIndexes',
 		'unhandledException',
 		'evaluator',
-		'isDead'
+		'isDead',
+		'interpreter'
 	],
 	#classVars : [
 		'BcToDASTContextMap',
@@ -77,6 +78,22 @@ DASTContext class >> newWithSender: aDASTContext receiver: aReceiver messageNode
 		receiver: aReceiver;
 		messageNode: aRBMessageNode;
 		evaluator: aDASTEvaluator.
+	^ context initializeContext
+]
+
+{ #category : 'instantiation' }
+DASTContext class >> newWithSender: aDASTContext receiver: aReceiver messageNode: aRBMessageNode evaluator: aDASTEvaluator interpreter: aDASTInterpreter [
+	| context |
+	context := ((aDASTEvaluator isEPDASTBlockMirror: aReceiver ) 
+					and: [ " Check if the message is one of the variants of value. This is very ugly and must be changed when implementing environments "
+						self valueToBlockMessages includes: aRBMessageNode selector ])
+		ifTrue: [ DASTBlockContext new ]
+		ifFalse: [ DASTMethodContext new ].
+	context sender: aDASTContext;
+		receiver: aReceiver;
+		messageNode: aRBMessageNode;
+		evaluator: aDASTEvaluator;
+		interpreter: aDASTInterpreter.
 	^ context initializeContext
 ]
 
@@ -482,6 +499,18 @@ DASTContext >> initialize [
 	tempVarIndex := 0
 ]
 
+{ #category : 'accessing' }
+DASTContext >> interpreter [
+
+	^ interpreter
+]
+
+{ #category : 'accessing' }
+DASTContext >> interpreter: anObject [
+
+	interpreter := anObject
+]
+
 { #category : 'helpers' }
 DASTContext >> ir [
 
@@ -564,8 +593,9 @@ DASTContext >> lookupSelector: aByteString startInClass: aClass [
             ifTrue: [ DASTErrorNonInteractive ]
             ifFalse: [ aClass ].
     ^( lclass lookupSelector: aByteString )
-        ifNil: [  ^ 
-                        lclass lookupSelector: #doesNotUnderstand: .
+        ifNil: [   1halt.
+								interpreter dnu: true.
+                        ^ lclass lookupSelector: #doesNotUnderstand: .
            ].
 ]
 
