@@ -5,7 +5,8 @@ Class {
 		'currentContext',
 		'programCounter',
 		'node',
-		'dnu'
+		'dnu',
+		'return'
 	],
 	#category : 'DebuggableASTInterpreter',
 	#package : 'DebuggableASTInterpreter'
@@ -87,6 +88,18 @@ DASTProgrammState >> programCounter [
 DASTProgrammState >> programCounter: anObject [
 
 	programCounter := anObject
+]
+
+{ #category : 'accessing' }
+DASTProgrammState >> returnValue [
+
+	^ return 
+]
+
+{ #category : 'accessing' }
+DASTProgrammState >> returnValue: aValue [
+
+	return := aValue
 ]
 
 { #category : 'accessing - structure variables' }

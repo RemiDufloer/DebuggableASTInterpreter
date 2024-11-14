@@ -10,7 +10,8 @@ Class {
 		'evaluator',
 		'astCache',
 		'myComposite',
-		'dnu'
+		'dnu',
+		'return'
 	],
 	#category : 'DebuggableASTInterpreter-Core',
 	#package : 'DebuggableASTInterpreter',
@@ -235,6 +236,18 @@ DASTInterpreter >> restart: aDASTContext [
 	].
 	
 	currentContext := newContext
+]
+
+{ #category : 'stack' }
+DASTInterpreter >> returnValue [
+
+	 ^ return
+]
+
+{ #category : 'as yet unclassified' }
+DASTInterpreter >> returnValue: aValue [
+
+	return := aValue
 ]
 
 { #category : 'private' }
@@ -510,6 +523,8 @@ DASTInterpreter >> visitReturnNode: aRBReturneNode [
 	methodContext isDead: true.
 
 	currentContext := senderContext.
+	1haltOnce.
+	self returnValue: value.
 	self stackPush: value
 ]
 
