@@ -489,7 +489,6 @@ DASTInterpreter >> visitMessageNode: aRBMessageNode [
 					              yourself ] ].
 	"check if is DNU"
 	method selector = #doesNotUnderstand: ifTrue: [
-		1 halt.
 		arguments := OrderedCollection new
 			             add: aRBMessageNode;
 			             yourself.
