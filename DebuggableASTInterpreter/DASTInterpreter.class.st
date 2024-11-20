@@ -467,7 +467,8 @@ DASTInterpreter >> visitMessageNode: aRBMessageNode [
 		              messageNode: aRBMessageNode
 		              evaluator: self evaluator
 						interpreter: self.
-
+	aRBMessageNode selector = #magritteDescription ifTrue:   [ |value| value := receiver perform: #magritteDescription. self returnValue: value.
+	self stackPush: value . ^ self  ].
 	" Lookup"
 	method := newContext methodOrBlock.
 	" Apply - invoke method "
@@ -489,8 +490,9 @@ DASTInterpreter >> visitMessageNode: aRBMessageNode [
 					              yourself ] ].
 	"check if is DNU"
 	method selector = #doesNotUnderstand: ifTrue: [
+	
 		arguments := OrderedCollection new
-			             add: aRBMessageNode;
+			             add: (DASTMessage new selector: aRBMessageNode selector; arguments:( aRBMessageNode arguments collect: #value); yourself);
 			             yourself.
 			 ].
 	" Set new context "
@@ -522,7 +524,6 @@ DASTInterpreter >> visitReturnNode: aRBReturneNode [
 	methodContext isDead: true.
 
 	currentContext := senderContext.
-	1haltOnce.
 	self returnValue: value.
 	self stackPush: value
 ]

@@ -593,7 +593,7 @@ DASTContext >> lookupSelector: aByteString startInClass: aClass [
             ifTrue: [ DASTErrorNonInteractive ]
             ifFalse: [ aClass ].
     ^( lclass lookupSelector: aByteString )
-        ifNil: [   
+        ifNil: [ 
 								interpreter dnu: true.
                         ^ lclass lookupSelector: #doesNotUnderstand: .
            ].
