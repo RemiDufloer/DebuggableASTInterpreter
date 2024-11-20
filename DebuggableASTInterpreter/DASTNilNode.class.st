@@ -9,7 +9,7 @@ Class {
 { #category : 'reflective operations' }
 DASTNilNode >> doesNotUnderstand: aMessage [
 
-	1 haltOnce.
+
 	^ false
 ]
 
