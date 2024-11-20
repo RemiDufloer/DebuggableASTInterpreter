@@ -48,7 +48,9 @@ DASTSystemEnvironment >> executePrimitiveMethod: aDASTMethod withArguments: aCol
 
 { #category : 'primitives' }
 DASTSystemEnvironment >> executePrimitiveMethod: aDASTMethod withReceiver: anObject withArguments: aCollection [ 
-	^ anObject tryPrimitive: aDASTMethod primitive withArgs: aCollection  
+	 aDASTMethod primitive = 117 ifTrue: [^ anObject perform: aDASTMethod selector withArguments: aCollection].
+	^ anObject  
+	tryPrimitive: aDASTMethod primitive withArgs: aCollection  
 ]
 
 { #category : 'variables-class' }
