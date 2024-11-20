@@ -24,3 +24,8 @@ DASTNilNode >> selector [
 
 	^ self
 ]
+
+{ #category : 'accessing' }
+DASTNilNode >> sourceCode [
+	^'(unknown source)'
+]
