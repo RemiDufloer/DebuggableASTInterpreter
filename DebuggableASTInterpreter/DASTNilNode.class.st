@@ -9,7 +9,7 @@ Class {
 { #category : 'reflective operations' }
 DASTNilNode >> doesNotUnderstand: aMessage [
 
-	1 haltOnce.
+
 	^ false
 ]
 
@@ -23,4 +23,9 @@ DASTNilNode >> methodNode [
 DASTNilNode >> selector [
 
 	^ self
+]
+
+{ #category : 'accessing' }
+DASTNilNode >> sourceCode [
+	^'(unknown source)'
 ]
