@@ -610,6 +610,11 @@ DASTContext >> messageNode: aRBMessageNode [
 ]
 
 { #category : 'accessing' }
+DASTContext >> method [
+	^self methodOrBlock nodeAST compiledMethod
+]
+
+{ #category : 'accessing' }
 DASTContext >> methodClass [
 	^ self methodOrBlock methodClass
 ]
@@ -880,6 +885,12 @@ DASTContext >> terminateTo: previousContext [
 			currentContext terminate.
 			currentContext := sendingContext ]].
 	sender := previousContext
+]
+
+{ #category : 'accessing' }
+DASTContext >> top [
+	stack ifEmpty: [ ^ #emptyStack ].
+	^ stack top
 ]
 
 { #category : 'accessing' }

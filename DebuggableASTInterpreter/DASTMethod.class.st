@@ -103,6 +103,16 @@ DASTMethod >> isPrimitive [
 ]
 
 { #category : 'accessing' }
+DASTMethod >> methodClass [ 	
+	
+	^[self nodeAST methodClass] 
+		on: Exception 
+		do: [:e | (self selector = 'noMethod') 
+						ifTrue: [ ^ UndefinedObject ] 
+						ifFalse: [ e defaultAction ] ]
+]
+
+{ #category : 'accessing' }
 DASTMethod >> pragmas [
 	^nodeAST pragmas
 ]
@@ -121,6 +131,11 @@ DASTMethod >> selector [
 DASTMethod >> selectorFormatted [
 	^ (self isNoMethod ifTrue: [ self selector, Character lf asString ] ifFalse: [ '' ]) "'(' , self methodClass asString , ')>>',"
 		
+]
+
+{ #category : 'accessing' }
+DASTMethod >> source [
+	^self nodeAST source
 ]
 
 { #category : 'gt-inspector-extension' }

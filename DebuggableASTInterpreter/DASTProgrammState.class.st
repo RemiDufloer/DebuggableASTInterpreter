@@ -74,7 +74,6 @@ DASTProgrammState >> node [
 
 { #category : 'accessing' }
 DASTProgrammState >> node: anObject [
-
 	node := anObject
 ]
 

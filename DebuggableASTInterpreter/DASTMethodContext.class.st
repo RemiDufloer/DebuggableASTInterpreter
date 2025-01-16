@@ -33,6 +33,11 @@ DASTMethodContext >> belongsToDoIt [
 	^ self methodOrBlock isNoMethod
 ]
 
+{ #category : 'accessing' }
+DASTMethodContext >> currentNode [ 	
+	^self nodes top
+]
+
 { #category : 'API-lookup' }
 DASTMethodContext >> findLocalVariable: aName [
 	^ variablesDict 
