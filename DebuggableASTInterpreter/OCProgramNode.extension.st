@@ -1,7 +1,7 @@
-Extension { #name : 'ASTProgramNode' }
+Extension { #name : 'OCProgramNode' }
 
 { #category : '*DebuggableASTInterpreter' }
-ASTProgramNode >> asBlockEvaluated [
+OCProgramNode >> asBlockEvaluated [
 	| sequenceNode blockNode messageNode |
 
 	sequenceNode := self asSequenceNode transformLastToReturn.
@@ -12,6 +12,6 @@ ASTProgramNode >> asBlockEvaluated [
 ]
 
 { #category : '*DebuggableASTInterpreter' }
-ASTProgramNode >> isDASTClosure [ 
+OCProgramNode >> isDASTClosure [ 
 	^false
 ]

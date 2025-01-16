@@ -1,6 +1,6 @@
-Extension { #name : 'ASTBlockNode' }
+Extension { #name : 'OCBlockNode' }
 
 { #category : '*DebuggableASTInterpreter' }
-ASTBlockNode >> sourceCode [
+OCBlockNode >> sourceCode [
 	^ [ super sourceCode ] on: Exception do: [ '' ]
 ]
